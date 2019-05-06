@@ -1,0 +1,19 @@
+{
+  "name": "assessment-3",
+  "version": "1.0.0",
+  "description": "a movie cinema app",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lithial/ITPF5.110Project3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lithial/ITPF5.110Project3/issues"
+  },
+  "homepage": "https://github.com/Lithial/ITPF5.110Project3#readme"
+}
