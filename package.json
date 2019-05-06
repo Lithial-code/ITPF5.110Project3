@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Lithial/ITPF5.110Project3/issues"
   },
-  "homepage": "https://github.com/Lithial/ITPF5.110Project3#readme"
+  "homepage": "https://github.com/Lithial/ITPF5.110Project3#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
 }

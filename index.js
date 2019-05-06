@@ -1,25 +1,26 @@
 var {question} = require('readline-sync');
+
 function Cinema() {
     var movies = [];
 
-    function add(movie) {
+    this.add = function(movie) {
         movies.push(movie);
     }
 
-    function getMovieNames() {
+    this.getMovieNames = function() {
         for (id in movies) {
             console.log(movies[id].name);
         }
     }
 
-    function remove(movieName) {
+    this.remove = function(movieName) {
         for (id in movies) {
             if (movies[id].name == movieName){
                 movies.splice(id);
             }
         }
     }
-    function findMovieItem(movieName){
+    this.findMovieItem = function(movieName){
         for (id in movies) {
             if (movies[id].name == movieName){
                 return movies[id];
@@ -29,7 +30,7 @@ function Cinema() {
             }
         }
     }
-    function findRatedMoviesNames(rating){
+    this.findRatedMoviesNames = function(rating){
         var list = [];
         for (id in movies) {
             if (movies[id].rating == rating){
@@ -38,7 +39,7 @@ function Cinema() {
         }
         return list;
     }
-    function getTotalMinutes(){
+    this. getTotalMinutes = function(){
         var minutes = 0;
         for (id in movies) {
          minutes =+ movies[id].minutes;
@@ -47,11 +48,72 @@ function Cinema() {
     }
 }
 
-function Movie(name, minutes, rating = null) {
+function Movie(name){
     this.name = name;
-    this.minutes = minutes;
-    this.rating = rating;
-    function setMinutes(){
 
+    var possibleRatings = ["G", "PG", "M","R13", "R15", "R16", "R18","RP13","RP16"];
+
+    this.setMinutes = function(){
+        console.table(possibleRatings);
+        var minutes = NumberQuestion("How long is this movie in minutes? :", possibleRatings.length+1) -1;
+        this.minutes = minutes;
+    };
+    this.setAudienceRating = function(){
+        if(this.rating == null){
+            var rating = possibleRatings[NumberQuestion("What rating does this movie have? :")];
+            this.rating = rating;
+        }
+      else{
+          console.log("This rating has already been set.")
+      }
+    }
+    this.setNameAndMinutes = function(name, minutes){
+        this.name = name;
+        if(minutes < 0){
+            this.minutes = minutes;
+        }
+        else{
+            this.minutes = NumberQuestion(`Your minutes for ${name} are not valid. Please try again. :`);
+        }
+    }
+    this.show = function(){
+        console.log(`Movie: ${movie.name} \n Duration: ${movie.minutes} \n Rating ${movie.rating}`);
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//Utils Functions
+////////////////////////////////////////////////////////////////////////////////
+function NumberQuestion(questionString, topLimit) {
+    var questionBool = true; //for the while loop
+    while (questionBool) {
+        //ask the user a question
+        var myQuestion = question(questionString);
+        var newQuestion = 0;
+        for (var i = 0; i < myQuestion.length; i++) {
+            //better validation. dig through the string and pull out all the numbers. concat them and then parse them
+            if (!isNaN(myQuestion[i])) {
+                newQuestion += myQuestion[i];
+            }
+        }
+        //parse the new hopefully char-less string
+        newQuestion = parseInt(newQuestion);
+        //if its a number return it. else deny the user and make them try again
+        if (!isNaN(newQuestion) && newQuestion >= 0) {
+            if(topLimit != null){
+                if(newQuestion <= topLimit){
+                    return newQuestion;
+                }
+                else{
+                    console.log("The number you have chosen is too high. PLease try again.")
+                }
+            }
+            else{
+                return newQuestion;
+            }
+        } else {
+            console.log("Answer is not a number. Please try again.")
+        }
     }
 }
