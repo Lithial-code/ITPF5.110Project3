@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Database</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="inputs">
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="title">
+                <label class="mdl-textfield__label" for="title">Title...</label>
+            </div>
+        </form>
+        <!-- Numeric Textfield -->
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minutes">
+                <label class="mdl-textfield__label" for="minutes">Duration in minutes...</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+            </div>
+        </form>
+        <button onclick="buttonFunction()" class="mdl-button mdl-js-button mdl-button--raised">
+                Add
+              </button>
+    </div>
+    <table class="mdl-data-table mdl-js-data-table" id='table'>
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">Name</th>
+                <th class="mdl-data-table__cell--non-numeric">Duration</th>
+                <th class="mdl-data-table__cell--non-numeric">Rating</th>
+                <th class="mdl-data-table__cell--non-numeric"> </th>
+            </tr>
+        </thead>
+    </table>
+    <script src="index.js"></script>
+</body>
+
+</html>
