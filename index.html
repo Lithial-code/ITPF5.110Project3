@@ -14,34 +14,88 @@
 
 <body>
     <div id="inputs">
-        <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="title">
-                <label class="mdl-textfield__label" for="title">Title...</label>
-            </div>
-        </form>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="title">
+            <label class="mdl-textfield__label" for="title">Title...</label>
+        </div>
+        <br>
         <!-- Numeric Textfield -->
-        <form action="#">
-            <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="minutes">
-                <label class="mdl-textfield__label" for="minutes">Duration in minutes...</label>
-                <span class="mdl-textfield__error">Input is not a number!</span>
-            </div>
-        </form>
-        <button onclick="buttonFunction()" class="mdl-button mdl-js-button mdl-button--raised">
-                Add
-              </button>
+        <div class="mdl-textfield mdl-js-textfield ">
+            <input class="mdl-textfield__input" type="text" pattern="^\d+$" id="minutes">
+            <label class="mdl-textfield__label" for="minutes">Duration in minutes...</label>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+        <br>
+        <div class="select">
+            <select class="select-text" id="dropdown" required>
+                <option value="4" disabled selected></option>
+                <option value="0">G</option>
+                <option value="1">PG</option>
+                <option value="2">M</option>
+                <option value="3">AO</option>
+
+            </select>
+            <span class="select-highlight"></span>
+            <span class="select-bar"></span>
+            <label class="select-label mdl-textfield--floating-label">Rating...</label>
+        </div>
+        <button onclick="addButton()" class="mdl-button mdl-js-button mdl-button--raised edit-button">
+            Add
+        </button>
     </div>
+
     <table class="mdl-data-table mdl-js-data-table" id='table'>
         <thead>
             <tr>
-                <th class="mdl-data-table__cell--non-numeric">Name</th>
-                <th class="mdl-data-table__cell--non-numeric">Duration</th>
-                <th class="mdl-data-table__cell--non-numeric">Rating</th>
-                <th class="mdl-data-table__cell--non-numeric"> </th>
+                <th class="name-header">Name</th>
+                <th class="duration-header">Duration</th>
+                <th class="rating-header">Rating</th>
+                <th class="delete-header">x</th>
             </tr>
         </thead>
     </table>
+    <button onclick="toggleEditableButton()" class="mdl-button mdl-js-button mdl-button--raised add-button edit-button">
+        Edit
+    </button>
+    <button id="cancel-sort-button" onclick="cancelSortButton()" class="mdl-button mdl-js-button mdl-button--raised add-button edit-button">
+        Cancel
+    </button>
+    <div class="sort">
+        <div class="select">
+            <select class="select-text" id="sort-dropdown" required>
+                <option value="4" disabled selected></option>
+                <option value="0">G</option>
+                <option value="1">PG</option>
+                <option value="2">M</option>
+                <option value="3">AO</option>
+
+            </select>
+            <span class="select-highlight"></span>
+            <span class="select-bar"></span>
+        </div>
+        <button id="sort-button" onclick="sortButton()" class="mdl-button mdl-js-button mdl-button--raised add-button edit-button">
+            Sort
+        </button>
+    </div>
+
+    <div class="excerpt">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="excerpt-input">
+            <label class="mdl-textfield__label" for="title">Please be exact</label>
+        </div>
+        <button onclick="excerptButton()" class="mdl-button mdl-js-button mdl-button--raised add-button">
+            Show
+        </button>
+    </div>
+
+    <div class="total-mins">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="mins-output" editable=false>
+        </div>
+        <button onclick="totalMins()" class="mdl-button mdl-js-button mdl-button--raised add-button">
+            Total mins
+        </button>
+    </div>
     <script src="index.js"></script>
 </body>
 
